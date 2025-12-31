@@ -1,0 +1,21 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  annotations:
+    camel.apache.org/operator.id: camel-k
+  name: hello
+spec:
+  flows:
+  - route:
+      from:
+        parameters:
+          period: "1000"
+        steps:
+        - setBody:
+            simple: Hello Camel from ${routeId}
+        - log: ${body}
+        uri: timer:yaml
+  traits:
+    camel:
+      runtimeProvider: plain-quarkus
+status: {}

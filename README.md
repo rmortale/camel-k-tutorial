@@ -50,6 +50,12 @@ spec:
 ## Create and test sample integration
 Creat sample route with `camel init hello.yaml`. Then run it with `kamel run hello.yaml`. List running integration with `kamel get`. Show log of running integration with `kamel log hello`.
 
+## Dry run
+Run integration in dry-run mode to see generated resources without applying them to the cluster:
+
+`kamel run  hello.yaml -t camel.runtime-provider=plain-quarkus -o yaml > integration.yaml`
+
+`kubectl apply -f integration.yaml`
 
 ## Promote
 While integration is running, open second terminal.
